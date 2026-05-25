@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>George Varughese · Associate, Business Relationships · Deloitte</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0a0a;
+    --bg: #f4f7fb;
+    --accent: #1C3F6E;
+    --accent2: #164a6e;
+    --dtt-green: #86BC25;
+    --dtt-dark: #012169;
+    --dtt-navy: #1C3F6E;
+    --dtt-light: #62a0d4;
+    --muted: #5a6577;
+    --rule: #d0d9e3;
+    --card: #e6eef5;
+    --code: #0d1a2a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Syne', sans-serif; background: var(--bg); color: var(--ink); overflow-x: hidden; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--dtt-dark);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 50px; height: 52px;
+  }
+  .nav-logo { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.1em; color: #fff; text-transform: uppercase; }
+  .nav-logo span { color: var(--dtt-green); }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: #9ca3af; text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--dtt-green); }
+
+  .hero {
+    min-height: 100vh; display: flex; flex-direction: column;
+    justify-content: flex-end; padding: 0 50px 70px;
+    position: relative; overflow: hidden; background: var(--dtt-dark);
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(134,188,37,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(134,188,37,0.08) 1px, transparent 1px);
+    background-size: 48px 48px; opacity: 0.7;
+  }
+  .hero-ticker {
+    position: absolute; top: 52px; left: 0; right: 0;
+    background: var(--dtt-green); padding: 8px 0; overflow: hidden; white-space: nowrap;
+  }
+  .hero-ticker-inner {
+    display: inline-block; animation: ticker 50s linear infinite;
+    font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.12em; color: var(--dtt-dark); text-transform: uppercase;
+  }
+  @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+  .hero-content { position: relative; z-index: 2; }
+  .hero-kicker { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--dtt-green); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 20px; }
+  .hero h1 { font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 800; letter-spacing: -0.04em; line-height: 0.95; color: #fff; text-transform: uppercase; margin-bottom: 24px; }
+  .hero h1 em { font-style: normal; color: var(--dtt-green); }
+  .hero-meta { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .hero-meta .pill { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 14px; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.7); }
+  .hero-meta .pill.live { background: var(--dtt-green); border-color: var(--dtt-green); color: var(--dtt-dark); font-weight: 700; }
+  .hero-meta .pill.sp { background: rgba(28,63,110,0.3); border-color: var(--dtt-navy); color: var(--dtt-light); }
+  .scroll-hint { position: absolute; bottom: 28px; right: 50px; font-family: 'DM Mono', monospace; font-size: 0.62rem; color: rgba(255,255,255,0.3); letter-spacing: 0.1em; text-transform: uppercase; writing-mode: vertical-rl; display: flex; align-items: center; gap: 8px; }
+  .scroll-hint::before { content: ''; width: 1px; height: 40px; background: rgba(134,188,37,0.4); }
+
+  .section { padding: 80px 50px; }
+  .section-label { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dtt-navy); margin-bottom: 12px; }
+  .section-title { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 40px; border-bottom: 2px solid var(--ink); padding-bottom: 16px; }
+
+  .metrics { background: var(--dtt-dark); display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; }
+  .metric-item { background: var(--dtt-dark); padding: 32px 28px; text-align: center; }
+  .metric-num { font-family: 'DM Mono', monospace; font-size: 2.8rem; font-weight: 500; color: var(--dtt-green); line-height: 1; margin-bottom: 8px; }
+  .metric-desc { font-size: 0.75rem; color: #9ca3af; line-height: 1.4; text-transform: uppercase; letter-spacing: 0.06em; }
+
+  .jd-match { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: #0d1a2a; margin-bottom: 40px; }
+  .jd-pane { background: var(--code); padding: 28px; font-family: 'DM Mono', monospace; font-size: 0.72rem; line-height: 1.9; overflow-x: auto; }
+  .jd-pane .pane-label { font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: #4b5563; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid #1f2937; }
+  .jd-pane .k { color: #7dd3fc; }
+  .jd-pane .s { color: #fde68a; }
+  .jd-pane .v { color: #c8f5a0; }
+  .jd-pane .c { color: #4b5563; }
+  .jd-pane .tick { color: #4ade80; }
+
+  .cert-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; background: var(--rule); }
+  .cert-card { background: var(--bg); padding: 24px 20px; transition: background 0.2s; }
+  .cert-card:hover { background: var(--card); }
+  .cert-org { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dtt-navy); margin-bottom: 8px; display: block; }
+  .cert-name { font-size: 0.88rem; font-weight: 700; margin-bottom: 6px; line-height: 1.3; }
+  .cert-desc { font-size: 0.72rem; color: var(--muted); line-height: 1.4; }
+  .cert-badge { display: inline-block; margin-top: 10px; font-family: 'DM Mono', monospace; font-size: 0.58rem; padding: 2px 8px; background: var(--ink); color: #4ade80; border-radius: 2px; letter-spacing: 0.08em; }
+  .cert-badge.preferred { background: var(--dtt-green); color: var(--dtt-dark); font-weight: 700; }
+
+  .timeline { position: relative; }
+  .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--rule); }
+  .tl-item { padding-left: 28px; margin-bottom: 48px; position: relative; }
+  .tl-item::before { content: ''; position: absolute; left: -5px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid var(--dtt-navy); }
+  .tl-date { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--dtt-navy); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .tl-role { font-size: 1.1rem; font-weight: 700; margin-bottom: 2px; }
+  .tl-co { font-size: 0.8rem; color: var(--muted); margin-bottom: 4px; }
+  .tl-dept { display: inline-block; font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.08em; padding: 3px 10px; border: 1px solid rgba(28,63,110,0.35); color: var(--dtt-navy); text-transform: uppercase; margin-bottom: 14px; }
+  .tl-points { list-style: none; }
+  .tl-points li { font-size: 0.88rem; line-height: 1.6; margin-bottom: 6px; padding-left: 16px; position: relative; color: #3a3a3a; }
+  .tl-points li::before { content: '→'; position: absolute; left: 0; color: var(--dtt-green); font-size: 0.8rem; }
+  .tl-points li strong { color: var(--ink); }
+  .tl-win { margin-top: 14px; padding: 10px 14px; border-left: 3px solid var(--dtt-green); background: rgba(134,188,37,0.08); font-family: 'DM Mono', monospace; font-size: 0.68rem; color: #4a6010; letter-spacing: 0.04em; }
+
+  .skills-matrix { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+  .skill-group h3 { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--rule); }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .stag { font-family: 'DM Mono', monospace; font-size: 0.68rem; padding: 4px 9px; border: 1px solid var(--rule); color: var(--ink); transition: all 0.15s; cursor: default; }
+  .stag:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .stag.hot { background: var(--dtt-navy); border-color: var(--dtt-navy); color: #fff; }
+  .stag.core { background: var(--dtt-dark); border-color: var(--dtt-dark); color: #fff; }
+  .stag.gold { background: var(--dtt-green); border-color: var(--dtt-green); color: var(--dtt-dark); font-weight: 700; }
+
+  .select-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: #0d1a2a; }
+  .select-card { background: var(--bg); padding: 28px 24px; transition: background 0.2s; }
+  .select-card:hover { background: var(--card); }
+  .select-org { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dtt-navy); margin-bottom: 10px; display: block; }
+  .select-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; }
+  .select-card p { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+
+  .values-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; background: #0d1a2a; margin-bottom: 40px; }
+  .value-card { background: var(--bg); padding: 28px 24px; }
+  .value-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dtt-green); margin-bottom: 8px; display: block; }
+  .value-card h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 10px; color: var(--dtt-dark); }
+  .value-card p { font-size: 0.82rem; color: #3a3a3a; line-height: 1.65; }
+
+  .contact-section { background: var(--dtt-dark); padding: 80px 50px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .contact-section h2 { font-size: 2.5rem; font-weight: 800; letter-spacing: -0.03em; color: #fff; line-height: 1.1; }
+  .contact-section h2 span { color: var(--dtt-green); }
+  .contact-links { display: flex; flex-direction: column; gap: 14px; }
+  .c-link { display: flex; align-items: center; gap: 16px; padding: 16px 20px; border: 1px solid #1a3a5c; text-decoration: none; transition: border-color 0.2s, background 0.2s; }
+  .c-link:hover { border-color: var(--dtt-green); background: rgba(134,188,37,0.06); }
+  .c-link .c-label { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: #4b5563; display: block; margin-bottom: 2px; }
+  .c-link .c-val { font-size: 0.88rem; color: #fff; font-weight: 600; }
+
+  footer { background: var(--dtt-dark); border-top: 1px solid #1a3a5c; padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; }
+  footer p { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: #4b5563; letter-spacing: 0.06em; }
+  footer p span { color: var(--dtt-green); }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; } .nav-links { display: none; }
+    .hero { padding: 0 20px 50px; } .section { padding: 60px 20px; }
+    .metrics { grid-template-columns: repeat(2, 1fr); } .jd-match { grid-template-columns: 1fr; }
+    .cert-grid { grid-template-columns: repeat(2, 1fr); } .skills-matrix { grid-template-columns: 1fr; }
+    .select-grid { grid-template-columns: 1fr; } .values-grid { grid-template-columns: 1fr; }
+    .contact-section { grid-template-columns: 1fr; padding: 60px 20px; }
+    footer { padding: 20px; flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">George <span>Varughese</span></div>
+  <div class="nav-links">
+    <a href="#match">Role Match</a>
+    <a href="#experience">Experience</a>
+    <a href="#values">Values Alignment</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#skills">Skills</a>
+    <a href="#selective">Programmes</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-ticker">
+    <div class="hero-ticker-inner">
+      Third-Party Due Diligence · Research & Investigation · SQL Analytics · Python Automation · Business Review Reporting · Root-Cause Analysis · Compliance Documentation · Stakeholder Coordination · McKinsey Forward · Oxford OxML · HPAIR Harvard · MIT Startup Alumni · UAE Resident · Immediate Start · Sharjah &nbsp;&nbsp;
+      Third-Party Due Diligence · Research & Investigation · SQL Analytics · Python Automation · Business Review Reporting · Root-Cause Analysis · Compliance Documentation · Stakeholder Coordination · McKinsey Forward · Oxford OxML · HPAIR Harvard · MIT Startup Alumni · UAE Resident · Immediate Start · Sharjah &nbsp;&nbsp;
+    </div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-kicker">Associate — Business Relationships · Deloitte · Sharjah, UAE · Posted 19-May-2026</div>
+    <h1>George<br><em>Varughese</em><br>Analyst.<br>Ready.</h1>
+    <div class="hero-meta">
+      <span class="pill live">● Immediate Start</span>
+      <span class="pill sp">Deloitte Applicant</span>
+      <span class="pill">Sharjah / Dubai, UAE</span>
+      <span class="pill">Residency Visa</span>
+      <span class="pill">AWS Certified</span>
+      <span class="pill">McKinsey Forward</span>
+      <span class="pill">B.Tech CSE — IIIT</span>
+    </div>
+  </div>
+  <div class="scroll-hint">Scroll</div>
+</section>
+
+<div class="metrics">
+  <div class="metric-item">
+    <div class="metric-num">7×</div>
+    <div class="metric-desc">Record Integrity<br>Restored as Sole Analyst</div>
+  </div>
+  <div class="metric-item">
+    <div class="metric-num">40%</div>
+    <div class="metric-desc">Reporting Overhead Reduced<br>Via Python Automation</div>
+  </div>
+  <div class="metric-item">
+    <div class="metric-num">3</div>
+    <div class="metric-desc">World-Competitive<br>Programme Selections</div>
+  </div>
+  <div class="metric-item">
+    <div class="metric-num">2+</div>
+    <div class="metric-desc">Years Research & Due<br>Diligence Delivery (UAE, KSA, USA)</div>
+  </div>
+</div>
+
+<section class="section" id="match">
+  <div class="section-label">Role Alignment</div>
+  <div class="section-title">Every Requirement,<br>Already Delivered</div>
+  <p style="font-size:0.92rem; color: var(--muted); max-width:680px; margin-bottom:32px; line-height:1.65;">
+    The Deloitte Associate Business Relationships role — third-party due diligence, processing clearances, coordinating between engagement teams, structured reporting — maps directly to active research and analytical delivery produced for UAE and Saudi Arabia government and enterprise clients over 2+ years.
+  </p>
+  <div class="jd-match">
+    <div class="jd-pane">
+      <div class="pane-label">Deloitte Associate, Business Relationships — Key Requirements</div>
+<span class="c">// Role Requirements — Sharjah, UAE</span>
+{
+  <span class="k">"due_diligence"</span>: <span class="s">"Conducting due diligence</span>
+<span class="s">    of third parties"</span>,
+
+  <span class="k">"business_relationships"</span>: <span class="s">"Responsible for processing</span>
+<span class="s">    Business Relationships"</span>,
+
+  <span class="k">"coordination"</span>: <span class="s">"Coordinating between</span>
+<span class="s">    engagement teams & relevant parties"</span>,
+
+  <span class="k">"clearance_decisions"</span>: <span class="s">"Issuing BR clearance,</span>
+<span class="s">    following clearance processes"</span>,
+
+  <span class="k">"research_capability"</span>: <span class="s">"Ability to conduct</span>
+<span class="s">    extensive research"</span>,
+
+  <span class="k">"data_analysis"</span>: <span class="s">"General understanding of</span>
+<span class="s">    data analysis techniques"</span>,
+
+  <span class="k">"office_proficiency"</span>: <span class="s">"Strong proficiency — Excel,</span>
+<span class="s">    Word, PowerPoint"</span>,
+
+  <span class="k">"compliance_experience"</span>: <span class="s">"Work experience in due</span>
+<span class="s">    diligence / compliance (preferred)"</span>,
+
+  <span class="k">"strategic_thinking"</span>: <span class="s">"Ability to think strategically;</span>
+<span class="s">    manage multi-disciplinary teams"</span>
+}
+    </div>
+    <div class="jd-pane">
+      <div class="pane-label">George Varughese — Live Evidence Mapping</div>
+<span class="c">// Active capabilities — production delivery</span>
+{
+  <span class="k">"due_diligence"</span>: <span class="tick">✓</span> <span class="v">EMDAD — SOLE ANALYST</span>
+  <span class="c">  // Systematic 3rd-party record</span>
+  <span class="c">  // investigation, live govt system</span>
+
+  <span class="k">"business_relationships"</span>: <span class="tick">✓</span> <span class="v">REACH GROUP — ONGOING</span>
+  <span class="c">  // 3rd-party research &amp; verification</span>
+  <span class="c">  // for UAE/KSA government clients</span>
+
+  <span class="k">"coordination"</span>: <span class="tick">✓</span> <span class="v">BOTH ROLES — ACTIVE</span>
+  <span class="c">  // Liaison between analyst team</span>
+  <span class="c">  // and client stakeholders</span>
+
+  <span class="k">"clearance_decisions"</span>: <span class="tick">✓</span> <span class="v">EMDAD — CRITICAL INCIDENT</span>
+  <span class="c">  // Produced root-cause findings</span>
+  <span class="c">  // informing corrective decisions</span>
+
+  <span class="k">"research_capability"</span>: <span class="tick">✓</span> <span class="v">DEFINING CAPABILITY</span>
+  <span class="c">  // 500+ records mined from scratch,</span>
+  <span class="c">  // zero documentation, live system</span>
+
+  <span class="k">"data_analysis"</span>: <span class="tick">✓</span> <span class="v">REACH + EMDAD — DAILY</span>
+  <span class="c">  // SQL, Python, Excel — production</span>
+  <span class="c">  // data analysis, both roles active</span>
+
+  <span class="k">"office_proficiency"</span>: <span class="tick">✓</span> <span class="v">DAILY PRODUCTION USE</span>
+  <span class="c">  // Excel advanced, Word SOPs,</span>
+  <span class="c">  // PPT for govt stakeholders</span>
+
+  <span class="k">"compliance_experience"</span>: <span class="tick">✓</span> <span class="v">STRUCTURALLY EQUIVALENT</span>
+  <span class="c">  // Defect investigation methodology =</span>
+  <span class="c">  // due diligence analytical discipline</span>
+
+  <span class="k">"strategic_thinking"</span>: <span class="tick">✓</span> <span class="v">McKINSEY FORWARD 2025</span>
+  <span class="c">  // Global selection on structured</span>
+  <span class="c">  // analytical & commercial thinking</span>
+}
+    </div>
+  </div>
+</section>
+
+<section class="section" id="experience" style="background: var(--card);">
+  <div class="section-label">Career Track</div>
+  <div class="section-title">Experience</div>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-date">May 2025 – Present</div>
+      <div class="tl-role">Research Analyst & Reporting Systems Developer</div>
+      <div class="tl-co">Reach Group · Dubai, UAE · Full-Time</div>
+      <div class="tl-dept">Research & Investigation · Third-Party Reporting · Stakeholder Coordination · UAE & KSA Government Clients</div>
+      <ul class="tl-points">
+        <li><strong>Third-party entity research and verification:</strong> Conduct structured research and analysis on third-party organisations and data entities for UAE and Saudi Arabia government agency clients — verifying records, investigating data integrity issues, and producing research reports used in client operational decision-making. Applied the systematic verification discipline central to sound due diligence practice.</li>
+        <li><strong>Coordinating between engagement teams and client stakeholders:</strong> Serve as the research and reporting liaison between internal analyst teams and government client stakeholders — coordinating data requests, managing reporting timelines, ensuring information accuracy across all parties, and following up on outstanding items to keep clearance workflows on track.</li>
+        <li><strong>Structured report preparation and publication:</strong> Prepare and publish structured analytical reports for weekly and quarterly business reviews — compiling multi-source data, charting performance trends, presenting findings in clear, decision-ready formats for senior government client leadership. Designed report templates and SOPs to standardise output quality across the team.</li>
+        <li><strong>SQL-driven data compilation and analysis:</strong> Write complex SQL queries to extract, transform, and compile operational data from multiple source systems — generating structured analytical outputs and data summaries for UAE and KSA government agency clients on recurring research and reporting cycles.</li>
+        <li><strong>Python automation for analytical workflow:</strong> Developed Python scripts automating repetitive data collection, transformation, validation, and report generation — reducing manual reporting overhead by 40% through scripted pipeline optimisation, freeing capacity for higher-value research and investigation work.</li>
+        <li><strong>Data interpretation for leadership:</strong> Supported client leadership teams in interpreting data trend outputs — translating analytical findings into accessible operational insight and supporting data-driven decisions at stakeholder level across UAE and Saudi Arabia operations.</li>
+      </ul>
+      <div class="tl-win">OUTCOME: 40% reporting overhead reduction via automation; reliable third-party research and structured reporting for live UAE government clients — the research and coordination discipline Deloitte's Business Relationships function requires</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">Oct 2024 – May 2025</div>
+      <div class="tl-role">Research & Data Systems Analyst — Investigation Lead</div>
+      <div class="tl-co">Emdad Human Resources Company · Riyadh, KSA (Remote from UAE) · Full-Time</div>
+      <div class="tl-dept">Due Diligence-Style Investigation · Root-Cause Research · Compliance Documentation · Saudi Arabia Government</div>
+      <ul class="tl-points">
+        <li><strong>Sole analyst — live third-party data investigation:</strong> Deployed as the sole research analyst to investigate and remediate a live government data system failure: 500+ active third-party records, 15% defect and record integrity rate, zero documentation, in active operational use. Full ownership of all research, root-cause analysis, corrective intervention, and stakeholder reporting throughout the incident.</li>
+        <li><strong>Due diligence-style root-cause investigation:</strong> Conducted exhaustive root-cause investigation — identified three distinct categories of data integrity defects, mapped error propagation paths, and determined the precise source of each category contributing to record loss. Applied the systematic verification and evidence-based analytical methodology that underlies thorough due diligence research practice.</li>
+        <li><strong>Record integrity restoration — 7× improvement:</strong> Reduced the live system defect and record loss rate from 15% to under 2% — a 7× improvement — within six weeks, with zero operational downtime. Rebuilt validation logic from first principles based on research findings; restored data integrity across all 500+ active records.</li>
+        <li><strong>Compliance documentation and SOPs:</strong> Produced comprehensive analytical documentation — data flow diagrams, defect analysis reports, root-cause findings, and operational SOPs — enabling the client team to independently monitor data quality and conduct ongoing compliance research post-handover.</li>
+        <li><strong>Government stakeholder reporting:</strong> Sole analytical interface for Saudi government IT operations throughout a six-week critical incident — presenting data research findings, defect trend analysis, and corrective action plans to senior government stakeholders in clear, non-technical formats.</li>
+      </ul>
+      <div class="tl-win">OUTCOME: 7× record integrity improvement (15% → under 2%) as sole research analyst, zero downtime — the investigative rigour and compliance discipline Deloitte's Business Relationships function demands</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">Jun 2024 – Oct 2024</div>
+      <div class="tl-role">Technical Analyst & Data Systems Developer</div>
+      <div class="tl-co">Maura (MIT-Founded AI Startup) · San Francisco, USA (Remote)</div>
+      <div class="tl-dept">US Engineering Culture · Analytical Research · Data Pipelines · Cross-timezone Delivery</div>
+      <ul class="tl-points">
+        <li><strong>Production research and data systems — MIT/US culture:</strong> Built production data collection and analytical systems from first principles inside a US-culture MIT-founded startup — full ownership of data schemas, validation logic, and analytical output quality under high-performance US engineering standards, operating across UAE, Sweden, and the USA.</li>
+        <li><strong>Structured research and analytical delivery:</strong> Implemented Python scripts and data processing pipelines for analytical systems — developing hands-on research, automation, and cross-functional coordination capability in a US startup environment with zero tolerance for imprecision or unsupported conclusions.</li>
+        <li><strong>Cross-timezone analytical coordination:</strong> Coordinated analytical delivery across teams in UAE, Sweden, and the USA — maintaining systematic research records, applying rigorous documentation standards, and delivering research outputs that met US-standard precision requirements. The cross-cultural, multi-stakeholder coordination this required is directly applicable to Deloitte's cross-functional engagement environment.</li>
+      </ul>
+      <div class="tl-win">OUTCOME: Analytical research and systems delivery inside US/MIT-culture startup — a precision standard and research ownership depth most UAE-based candidates at this level will not have experienced</div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="values">
+  <div class="section-label">Cultural Alignment</div>
+  <div class="section-title">Deloitte Shared Values —<br>Already Applied in Practice</div>
+  <p style="font-size:0.92rem; color: var(--muted); max-width:640px; margin-bottom:32px; line-height:1.65;">
+    Deloitte's shared values are not aspirational language. They describe the working standard I have already applied in live research environments — under pressure, with operational accountability, with real stakes attached to the outcome.
+  </p>
+  <div class="values-grid">
+    <div class="value-card">
+      <span class="value-label">Deloitte Value</span>
+      <h3>Serve with Integrity</h3>
+      <p>At Emdad, a 15% record integrity rate in a live government system was not acceptable. I did not patch the surface symptoms — I investigated until I identified the root causes, documented the findings transparently, and rebuilt the logic from first principles. No shortcuts. That is what serving with integrity looks like in an analytical context: the commitment to get to the accurate answer, even when the accurate answer is harder to reach. Deloitte's Business Relationships function performs the due diligence that protects the integrity of every client engagement. I understand why that standard is non-negotiable — I have already held myself to it under operational pressure.</p>
+    </div>
+    <div class="value-card">
+      <span class="value-label">Deloitte Value</span>
+      <h3>Collaborate for Measurable Impact</h3>
+      <p>At Reach Group, I am the coordination layer between the internal research team and multiple UAE and Saudi Arabia government agency clients — managing information flow, aligning on timelines, and ensuring the accuracy of data shared between parties. At Emdad, I was the sole analytical interface for Saudi government IT operations throughout a six-week critical incident. Collaboration for measurable impact — not collaboration as a process, but as a discipline that produces a specific, verifiable outcome — is how I have worked in both roles. The Business Relationships clearance function requires exactly this: coordination between engagement teams and relevant parties that results in a defensible, accurate decision.</p>
+    </div>
+    <div class="value-card">
+      <span class="value-label">Deloitte Value</span>
+      <h3>Lead the Way</h3>
+      <p>At Emdad, there was no template, no documentation, no senior analyst to escalate to. I designed the investigative methodology from first principles, developed the defect typology that structured all subsequent analysis, and owned the outcome completely. The McKinsey Forward Programme and Oxford OxML Summer School were deliberate choices over easier alternatives — both globally competitive, both requiring me to demonstrate the initiative and analytical capability to operate at a standard higher than the norm. At Deloitte, leading the way as an Associate means taking ownership of the research process, developing personal expertise in Business Relationships practice, and being the person the engagement team can rely on for accurate, timely due diligence output. That is how I work by default.</p>
+    </div>
+    <div class="value-card">
+      <span class="value-label">Deloitte Value</span>
+      <h3>Take Care of Each Other · Foster Inclusion</h3>
+      <p>As a HPAIR Harvard Delegate 2025, I engaged in structured dialogue with analytical leaders and delegates from across Asia, the Middle East, and globally — developing the cross-cultural communication and inclusive collaboration capability that an organisation like Deloitte, operating across the diverse UAE professional landscape, actively requires. My experience coordinating research delivery across UAE, Saudi Arabia, Sweden, and the USA — at Maura, at Reach Group, and at Emdad — reflects a working practice that is naturally cross-cultural and inclusive. I understand that Deloitte's strength as a professional services firm comes from the diversity of its people and the quality of how they work together.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="certifications" style="background: var(--card);">
+  <div class="section-label">Qualifications</div>
+  <div class="section-title">Certifications —<br>All Active</div>
+  <div class="cert-grid">
+    <div class="cert-card">
+      <span class="cert-org">Amazon Web Services</span>
+      <div class="cert-name">AWS Cloud Practitioner</div>
+      <div class="cert-desc">Cloud data infrastructure, analytics services, and cloud-native data systems — relevant to understanding the data environments in which Deloitte's analytics and advisory teams operate, and to the cloud-hosted research and compliance tools increasingly used in professional services due diligence.</div>
+      <span class="cert-badge preferred">AWS · Active · Feb 2024</span>
+    </div>
+    <div class="cert-card">
+      <span class="cert-org">McKinsey & Company</span>
+      <div class="cert-name">McKinsey Forward Programme</div>
+      <div class="cert-desc">Globally competitive selection — rigorous analytical problem-solving, structured commercial decision frameworks, and quantitative thinking. Directly validates the strategic thinking, structured research methodology, and analytical rigour that Deloitte's Business Relationships due diligence function requires from its Associates.</div>
+      <span class="cert-badge preferred">McKinsey · 2025</span>
+    </div>
+    <div class="cert-card">
+      <span class="cert-org">University of Oxford</span>
+      <div class="cert-name">OxML Machine Learning Summer School</div>
+      <div class="cert-desc">Advanced data modelling, machine learning methods, and statistical analysis — directly relevant to applying sophisticated analytical techniques to third-party due diligence research, identifying patterns in large data sets, and developing the quantitative analysis capability that differentiates thorough due diligence from surface-level screening.</div>
+      <span class="cert-badge">Oxford · 2025</span>
+    </div>
+    <div class="cert-card">
+      <span class="cert-org">Harvard University</span>
+      <div class="cert-name">HPAIR Harvard Delegate</div>
+      <div class="cert-desc">Harvard Project for Asian and International Relations — analytical leadership, cross-cultural communication, and structured decision-making under complexity. Directly relevant to the inclusive, cross-functional collaboration that Deloitte's Business Relationships team requires when coordinating between engagement teams, risk, legal, and finance partners.</div>
+      <span class="cert-badge">Harvard · 2025</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="skills">
+  <div class="section-label">Capabilities</div>
+  <div class="section-title">Skills Matrix</div>
+  <div class="skills-matrix">
+    <div class="skill-group">
+      <h3>Research & Due Diligence</h3>
+      <div class="skill-tags">
+        <span class="stag hot">Third-Party Due Diligence</span>
+        <span class="stag hot">Root-Cause Investigation</span>
+        <span class="stag hot">Entity Research & Verification</span>
+        <span class="stag hot">Defect & Integrity Analysis</span>
+        <span class="stag core">Compliance Documentation</span>
+        <span class="stag core">SOP Development</span>
+        <span class="stag gold">Extensive Research Capability</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Coordination & Reporting</h3>
+      <div class="skill-tags">
+        <span class="stag hot">Stakeholder Coordination</span>
+        <span class="stag hot">Engagement Team Liaison</span>
+        <span class="stag hot">Business Review Reporting (WBR/QBR)</span>
+        <span class="stag hot">Government Client Reporting</span>
+        <span class="stag core">Report Preparation & Publication</span>
+        <span class="stag core">Process & Clearance Documentation</span>
+        <span class="stag">Cross-functional Communication</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Data Analysis & Microsoft Office</h3>
+      <div class="skill-tags">
+        <span class="stag hot">Advanced Excel (Pivot, VLOOKUP, Analysis)</span>
+        <span class="stag hot">Word (Technical Documentation & SOPs)</span>
+        <span class="stag hot">PowerPoint (Stakeholder Presentations)</span>
+        <span class="stag hot">SQL Data Compilation & Analysis</span>
+        <span class="stag core">Data Trend Identification</span>
+        <span class="stag core">KPI Charting & Visualisation</span>
+        <span class="stag">Statistical Analysis Methods</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Technical & Analytical Systems</h3>
+      <div class="skill-tags">
+        <span class="stag hot">Python (Automation & Analysis)</span>
+        <span class="stag hot">SQL (MySQL, PostgreSQL, MSSQL)</span>
+        <span class="stag hot">AWS Certified (CCP)</span>
+        <span class="stag hot">Dashboard Development</span>
+        <span class="stag core">Data Pipeline Management</span>
+        <span class="stag core">Azure AZ-900</span>
+        <span class="stag">Google IT Support · ITIL Foundation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="selective" style="background: var(--card);">
+  <div class="section-label">Global Selection · Analytical Excellence</div>
+  <div class="section-title">Programmes &<br>Achievements</div>
+  <div class="select-grid">
+    <div class="select-card">
+      <span class="select-org">McKinsey & Company</span>
+      <h3>Forward Programme 2025</h3>
+      <p>Selected from worldwide candidates on analytical capability and structured problem-solving — McKinsey's highly competitive programme for rigorous commercial analysis and decision frameworks. The strategic thinking, structured research methodology, and precise analytical communication this programme selects for and develops are precisely the capabilities Deloitte's Business Relationships function requires from its Associates: the ability to think through a complex due diligence situation clearly, structure the research systematically, and communicate the findings with precision.</p>
+    </div>
+    <div class="select-card">
+      <span class="select-org">University of Oxford</span>
+      <h3>OxML Summer School 2025</h3>
+      <p>Accepted to Oxford's competitive Machine Learning Summer School from worldwide applicants. Advanced statistical modelling and data analysis methods directly applicable to developing sophisticated due diligence research techniques — including pattern identification across large third-party data sets, anomaly detection in entity relationships, and the quantitative analysis approaches that modern professional services compliance practice increasingly applies to business relationship risk assessment.</p>
+    </div>
+    <div class="select-card">
+      <span class="select-org">Harvard University</span>
+      <h3>HPAIR Delegate 2025</h3>
+      <p>Selected as Harvard Project for Asian and International Relations delegate from thousands of global applicants — focused on analytical leadership, cross-functional decision-making, and structured engagement across diverse international stakeholder groups. Directly relevant to Deloitte's collaborative, inclusive culture and to the cross-functional coordination between engagement teams, risk, legal, and finance stakeholders that the Business Relationships Associate role requires every day.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background: var(--bg); padding-top: 0; padding-bottom: 80px;">
+  <div class="section-label">Academic Foundation</div>
+  <div class="section-title">Education</div>
+  <div style="padding-left: 28px; border-left: 2px solid var(--rule);">
+    <div class="tl-date">2021 – 2025</div>
+    <div class="tl-role">B.Tech, Computer Science & Engineering</div>
+    <div class="tl-co">Indian Institute of Information Technology (IIIT) Kottayam</div>
+    <div style="margin-top: 12px;">
+      <div style="font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--muted); letter-spacing: 0.06em; line-height: 1.9;">
+        Database Systems &nbsp;·&nbsp; Data Structures & Algorithms &nbsp;·&nbsp; Statistical Analysis &nbsp;·&nbsp; Artificial Intelligence &nbsp;·&nbsp; Computer Networks &nbsp;·&nbsp; Operating Systems &nbsp;·&nbsp; Software Engineering &nbsp;·&nbsp; Business Analytics &nbsp;·&nbsp; Cryptography &nbsp;·&nbsp; Embedded Systems
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="contact-section" id="contact">
+  <div>
+    <h2>Every<br><span>Requirement.</span><br>Already Delivered.</h2>
+    <p style="color:#9ca3af; font-size:0.85rem; margin-top:20px; line-height:1.6; max-width:380px;">
+      UAE-based, Residency Visa, available immediately. The Deloitte Associate Business Relationships role is not an aspiration — it is the structured research, due diligence-style investigation, coordination, and analytical reporting work I have been delivering for government and enterprise clients across the UAE and Saudi Arabia for 2+ years. The firm is Deloitte. The passion for the work is genuine.
+    </p>
+  </div>
+  <div class="contact-links">
+    <a class="c-link" href="mailto:georgevjr03@gmail.com">
+      <div>
+        <span class="c-label">Email</span>
+        <span class="c-val">georgevjr03@gmail.com</span>
+      </div>
+    </a>
+    <a class="c-link" href="tel:+971509382514">
+      <div>
+        <span class="c-label">Phone · WhatsApp</span>
+        <span class="c-val">+971 50 938 2514</span>
+      </div>
+    </a>
+    <a class="c-link" href="https://georgevjr03.github.io/Deloitte_Portfolio" target="_blank">
+      <div>
+        <span class="c-label">Portfolio</span>
+        <span class="c-val">georgevjr03.github.io/Deloitte_Portfolio</span>
+      </div>
+    </a>
+    <a class="c-link" href="#">
+      <div>
+        <span class="c-label">Location & Availability</span>
+        <span class="c-val">Sharjah / Dubai, UAE — Residency Visa — Immediate Start</span>
+      </div>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <p>George Varughese  ·  <span>Associate · Business Relationships · Deloitte</span>  ·  Sharjah, UAE  ·  May 2026</p>
+</footer>
+</body>
+</html>
